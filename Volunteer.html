@@ -43,3 +43,291 @@
 	    <br>
 	</div>
 </div>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Info windows</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+  	<script src="https://maps.googleapis.com/maps/api/js"></script>
+    <div id="map"></div>
+    <script>
+
+      // This example displays a marker at the center of Australia.
+      // When the user clicks the marker, an info window opens.
+		
+      function initMap() {
+        var DC = {lat: 38.9072, lng: -77.0369};
+        var sierra ={lat: 38.896921, lng: -77.010342};
+        var anacostia ={lat:38.941257, lng: -76.941091};
+        var casey = {lat:38.928403, lng: -76.99096};
+        var blossoms = {lat:38.9415691, lng: -77.028727};
+        var DEE = {lat: 38.9060727, lng: -77.006302};
+        var NC = {lat: 39.0211052,lng: -77.10887109};
+        var PR = {lat: 38.9167693, lng: -77.02923770};
+        var ECC = {lat:38.8661414, lng: -77.010705833};
+        var FWW = {lat:38.9093431, lng: -77.037557199};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: DC
+        });
+
+        var contentStringSierra = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Sierra Club</h1>'+
+            '<div id="bodyContent">'+
+            '<p>To explore, enjoy, and protect the wild'+ 'places of the earth; '+
+'To practice and promote the responsible use of the earths'+ 'ecosystems and resources; '+
+'To educate and enlist humanity to protect and restore the'+ 'quality of the natural and human environment; and to use'+ 
+        'all lawful means to carry out these objectives.</p>'+
+            '<p>Attribution: Mission Statment, <a href="http://sierraclub.org/policy">'+
+            'http://sierraclub.org/policy</a> </p>'+
+            '<p>TO VOLUNTEER GO TO, <a href="http://www.sierraclub.org/programs">'+
+            'http://www.sierraclub.org/programs</a> </p>'+
+            '</div>'+
+            '</div>';
+        
+        var contentStringAnacostia = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Anacostia Watershed Society</h1>'+
+            '<div id="bodyContent">'+
+            '<p>The Anacostia Watershed Society was founded '+
+            'in 1989 by a small group of concerned individuals '+ 'who decided that the environmental needs of the Anacostia '+ 'River and its watershed communities required serious'+ 'attention. </p>'+
+            '<p>Attribution: Purpose, <a href="http://www.anacostiaws.org/about/purpose">'+
+            'http://www.anacostiaws.org/about/purpose</a> </p>'+'<p>TO VOLUNTEER GO TO, <a href="http://www.anacostiaws.org/get-involved/volunteer-stewardship">'+
+            'http://www.anacostiaws.org/get-involved/volunteer-stewardship</a> </p>'+
+            '</div>'+
+            '</div>';
+        
+        var contentStringCasey = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Casey Trees</h1>'+
+            '<div id="bodyContent">'+
+            '<p>Each year, Casey Trees plants more than 2,500 trees across the District. We do this because we know firsthand how trees transform spaces for the better and we want D.C. to be the best city to live, work and play.  </p>'+
+            '<p>Attribution: Tree Planting, <a href="http://caseytrees.org/programs/planting/">'+
+            'http://caseytrees.org/programs/planting/</a> </p>'+'<p>TO VOLUNTEER GO TO, <a href="http://caseytrees.org/get-involved/volunteer/">'+
+            'http://caseytrees.org/get-involved/volunteer/</a> </p>'+
+            '</div>'+
+            '</div>';
+        
+        var contentStringBlossom = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">City Blossom</h1>'+
+            '<div id="bodyContent">'+
+            '<p> Washington DC is our home base where we test and innovate new ideas for designing and implementing urban gardens that are communal, educational, artistic expressions of their surroundings. </p>'+
+            '<p>Attribution: Who We Are, <a href="http://cityblossoms.org/who-we-are/">'+
+            'http://cityblossoms.org/who-we-are/</a> </p>'+
+            '<p>TO VOLUNTEER GO TO, <a href="http://cityblossoms.org/volunteer/">'+
+            'http://cityblossoms.org/volunteer/</a> </p>'+
+            '</div>'+
+            '</div>';
+        
+        var contentStringDEE = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Sustainable DC</h1>'+
+            '<div id="bodyContent">'+
+            '<p> In just one generation – 20 years – the District of Columbia will be the healthiest, greenest, and most livable city in the United States. An international destination for people and investment, the District will be a model of innovative policies and practices that improve quality of life and economic opportunity. We will demonstrate how enhancing our natural and built environments, investing in a diverse clean economy, and reducing disparities among residents can create an educated, equitable, and prosperous society. </p>'+
+            '<p>Attribution: Vision, <a href="http://www.sustainabledc.org/">'+
+            'http://www.sustainabledc.org/</a> </p>'+
+            '<p>TO VOLUNTEER GO TO, <a href="http://www.sustainabledc.org/volunteers/">'+
+            'http://www.sustainabledc.org/volunteers/</a> </p>'+
+            '</div>'+
+            '</div>';
+
+        var contentStringNC = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">The Nature Conservatory</h1>'+
+            '<div id="bodyContent">'+
+            '<p> The mission of The Nature Conservancy is to conserve the lands and waters on which all life depends.</p>'+
+            '<p>Attribution: Mission, <a href="http://www.nature.org/about-us/vision-mission/index.htm?intc=nature.tnav.about">'+
+            'http://www.nature.org/about-us/vision-mission/index.htm?intc=nature.tnav.about</a> </p>'+
+            '<p>TO VOLUNTEER GO TO, <a href="http://www.nature.org/about-us/volunteer/index.htm?intc=nature.tnav.getinvolved">'+
+            'http://www.nature.org/about-us/volunteer/index.htm?intc=nature.tnav.getinvolved</a> </p>'+
+            '</div>'+
+            '</div>';
+        
+         var contentStringPR = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">DC Department of Parks and Recreation</h1>'+
+            '<div id="bodyContent">'+
+            '<p> DPR is present and active in neighborhoods and communities across the District and is proud to draw a large amount of community involvement and support through volunteers. The hard work and support provided by community volunteers allows DPR to extend the impact of many of our programs and services.</p>'+
+            '<p>Attribution: Volunteers, <a href="http://dpr.dc.gov/page/volunteers-01">'+
+            'http://dpr.dc.gov/page/volunteers-01</a> </p>'+
+             '<p>TO VOLUNTEER GO TO, <a href="http://dpr.dc.gov/page/volunteers-01">'+
+            'http://dpr.dc.gov/page/volunteers-01</a> </p>'+
+            '</div>'+
+            '</div>';
+        
+         var contentStringECC = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Earth Conservation Corps</h1>'+
+            '<div id="bodyContent">'+
+            '<p> Active Conservation</p>'+
+            '<p>Attribution: What We Do, <a href="http://www.earthconservationcorps.org/our-work/">'+
+            'http://www.earthconservationcorps.org/our-work/</a> </p>'+
+             '<p>TO VOLUNTEER GO TO, <a href="http://www.earthconservationcorps.net/volunteer/">'+
+            'http://www.earthconservationcorps.net/volunteer/</a> </p>'+
+            '</div>'+
+            '</div>';
+        
+         var contentStringFWW = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Food and Water Watch</h1>'+
+            '<div id="bodyContent">'+
+            '<p> Food & Water Watch champions healthy food and clean water for all. We stand up to corporations that put profits before people, and advocate for a democracy that improves people’s lives and protects our environment.</p>'+
+            '<p>Attribution: About, <a href="http://www.foodandwaterwatch.org/about">'+
+            'http://www.foodandwaterwatch.org/about</a> </p>'+
+             '<p>TO VOLUNTEER GO TO, <a href="http://www.foodandwaterwatch.org/about/get-active-where-you-live">'+ 'http://www.foodandwaterwatch.org/about/get-active-where-you-live</a> </p>'+
+            '</div>'+
+            '</div>';
+        
+        var infowindow = new google.maps.InfoWindow({
+          content: contentStringSierra
+        });
+
+        var marker = new google.maps.Marker({
+          position: sierra,
+          map: map,
+          title: 'Sierra Club'
+        });
+        
+        var infowindowF = new google.maps.InfoWindow({
+          content: contentStringFWW
+        });
+
+        var markerF = new google.maps.Marker({
+          position: FWW,
+          map: map,
+          title: 'Food and Water Watch'
+        });
+        
+        
+        var infowindowE = new google.maps.InfoWindow({
+          content: contentStringECC
+        });
+
+        var markerE = new google.maps.Marker({
+          position: ECC,
+          map: map,
+          title: 'Earth Conservation Corps'
+        });
+        
+        var infowindowP = new google.maps.InfoWindow({
+          content: contentStringPR
+        });
+
+        var markerP = new google.maps.Marker({
+          position: PR,
+          map: map,
+          title: 'Parks and Rec'
+        });
+        
+         var infowindowN = new google.maps.InfoWindow({
+          content: contentStringNC
+        });
+
+        var markerN = new google.maps.Marker({
+          position: NC,
+          map: map,
+          title: 'Nature Conservatory'
+        });
+        
+         var infowindowB = new google.maps.InfoWindow({
+          content: contentStringBlossom
+        });
+
+        var markerB = new google.maps.Marker({
+          position: blossoms,
+          map: map,
+          title: 'City Blossoms'
+        });
+        
+        var infowindowD = new google.maps.InfoWindow({
+          content: contentStringDEE
+        });
+
+        var markerD = new google.maps.Marker({
+          position: DEE,
+          map: map,
+          title: 'Department of Energy and Environment'
+        });
+        
+         var infowindowA = new google.maps.InfoWindow({
+          content: contentStringAnacostia
+        });
+
+        var markerC = new google.maps.Marker({
+          position: casey,
+          map: map,
+          title: 'Casey Trees'
+        });
+        var infowindowC = new google.maps.InfoWindow({
+          content: contentStringCasey
+        });
+
+        var markerA = new google.maps.Marker({
+          position: anacostia,
+          map: map,
+          title: 'Anacostia Watershed Society'
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+        markerA.addListener('click', function() {
+          infowindowA.open(map, markerA);
+        });
+        markerC.addListener('click', function() {
+          infowindowC.open(map, markerC);
+        });
+         markerB.addListener('click', function() {
+          infowindowB.open(map, markerB);
+        });
+        markerD.addListener('click', function() {
+          infowindowD.open(map, markerD);
+        });
+         markerN.addListener('click', function() {
+          infowindowN.open(map, markerN);
+        });
+        markerP.addListener('click', function() {
+          infowindowP.open(map, markerP);
+        });
+        markerE.addListener('click', function() {
+          infowindowE.open(map, markerE);
+        });
+        
+        markerF.addListener('click', function() {
+          infowindowF.open(map, markerF);
+        });
+        
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfquy_GVgVAKJVEQoHHcHHHSVRMXzMMig&callback=initMap">
+    </script>
+  </body>
+</html>
